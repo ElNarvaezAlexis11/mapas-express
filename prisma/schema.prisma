@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model aiuda {
+  id                        Int     @id @default(autoincrement())
+  CV_CCT                    String? @db.Text
+  C_NOMBRE                  String? @db.Text
+  C_ADMINISTRATIVA          String? @db.Text
+  INMUEBLE_C_NOM_MUN        String? @db.Text
+  INMUEBLE_C_NOM_LOC        String? @db.Text
+  INMUEBLE_C_NOM_AMBITO     String? @db.Text
+  INMUEBLE_C_TIPO_ASEN      String? @db.Text
+  INMUEBLE_LATITUD          Float?
+  INMUEBLE_LONGITUD         Float?
+  SOSTENIMIENTO_C_CONTROL   String? @db.Text
+  C_TURNO_1                 String? @db.Text
+  TIPONIVELSUB_C_SERVICION1 String? @db.Text
+  TIPONIVELSUB_C_SERVICION2 String? @db.Text
+}
