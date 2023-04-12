@@ -39,8 +39,8 @@ router.get('/', async (req, res) => {
             SOSTENIMIENTO_C_CONTROL: sost
         },
         select: {
-            lat: { INMUEBLE_LATITUD: { as: 'lat' } },
-            lng: { INMUEBLE_LONGITUD: { as: 'lng' } }
+            INMUEBLE_LATITUD: true,
+            INMUEBLE_LONGITUD: true
         },
         take: 20
     });
@@ -49,7 +49,10 @@ router.get('/', async (req, res) => {
         estados,
         turnos,
         sostenimientos,
-        locations
+        locations,
+        estado,
+        turno,
+        sost
     });
 });
 
