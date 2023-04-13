@@ -2,9 +2,9 @@ const { Router } = require("express");
 const { PrismaClient } = require("@prisma/client");
 
 const router = Router();
+const prisma = new PrismaClient();
 
 router.get('/', async (req, res) => {
-    const prisma = new PrismaClient();
     //agrupamos por estados
     const estados = await prisma.aiuda.groupBy({
         by: ['C_ADMINISTRATIVA'],
@@ -31,6 +31,7 @@ router.get('/', async (req, res) => {
     const estado = req.query.estado ?? '';
     const turno = req.query.turno ?? '';
     const sost = req.query.sost ?? '';
+    const limit = req.query.limit ?? 5;
 
     const locations = await prisma.aiuda.findMany({
         where: {
@@ -42,7 +43,7 @@ router.get('/', async (req, res) => {
             INMUEBLE_LATITUD: true,
             INMUEBLE_LONGITUD: true
         },
-        take: 20
+        take: Number(limit)
     });
 
     res.render('index', {
@@ -52,7 +53,8 @@ router.get('/', async (req, res) => {
         locations,
         estado,
         turno,
-        sost
+        sost,
+        limit: Number(limit)
     });
 });
 
