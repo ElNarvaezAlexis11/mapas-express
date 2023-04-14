@@ -8,6 +8,12 @@
     "start": "node src/app.js",
     "dev": "npx nodemon src/app.js"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "public/css/*.css",
+      "public/js/*.js"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -1,4 +1,11 @@
+import theme from "./theme.js";
+import api from "./api.js"
+
 document.addEventListener('DOMContentLoaded', event => {
+    //theme
+    theme();
+    api();
+
     const locations = document.getElementById('container-map');
     const data = JSON.parse(locations.dataset.locations ?? []);
 
