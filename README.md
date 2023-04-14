@@ -1,19 +1,32 @@
-# Run dev serve
 
-```
-npm run dev
-```
-# Run migrations
+# Google maps markers
 
-```
-npx prisma migrate dev
 
-```
-# Reset migrations
 
-```
-npx prisma migrate reset
+## Installation
+
+Install project with npm
+
+```bash
+  npm i
 ```
 
-# Data types to Prisma ORM
-[Data type ](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model)
+Pull databases with prisma
+
+```bash
+  npx prisma generate
+```
+
+
+Generate primas client
+
+```bash
+  npx prisma generate
+```
+
+## Run proyecto 
+```bash
+  npm run dv
+```
+
+    
