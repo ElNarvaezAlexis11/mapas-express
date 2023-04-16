@@ -24,9 +24,6 @@ export default function () {
                 child: muni.INMUEBLE_C_NOM_MUN
             }); 
             c.innerText = muni.INMUEBLE_C_NOM_MUN;
-            console.log(muni.INMUEBLE_C_NOM_MUN);
-            console.log(opt);
-
             selectorMuni.appendChild(opt);
         });
         selectorMuni.disabled = false;

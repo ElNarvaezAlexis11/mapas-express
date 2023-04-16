@@ -36,6 +36,21 @@ router.get('/', async (req, res) => {
         const sost = req.query.sost ?? '';
         const limit = req.query.limit ?? 5;
 
+        //Agrupamos por municipio
+        let municipalities = [];
+        if(estado != ''){
+            municipalities = await prisma.aiuda.groupBy({
+                by: ['C_ADMINISTRATIVA','INMUEBLE_C_NOM_MUN'],
+                where: {
+                    C_ADMINISTRATIVA: estado
+                },
+                select: {
+                    INMUEBLE_C_NOM_MUN: true,
+                }
+            });
+        }
+
+        //Solicitamos todos los datos
         const locations = await prisma.aiuda.findMany({
             where: {
                 C_ADMINISTRATIVA: estado,
@@ -58,7 +73,8 @@ router.get('/', async (req, res) => {
             estado,
             turno,
             sost,
-            limit: Number(limit)
+            limit: Number(limit),
+            municipalities
         });
     } catch (error) {
         res.render('error',{

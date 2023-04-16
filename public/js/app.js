@@ -27,17 +27,23 @@ document.addEventListener('DOMContentLoaded', event => {
         zoom: 3,
         center: { lat: 17.0812951, lng: -96.770751 },
     });
-    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    //const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const markers = newData.map((position, i) => {
-        const label = labels[i % labels.length];
+        //const label = labels[i % labels.length];
         const marker = new google.maps.Marker({
-            position,
-            label,
+            position
         });
 
         marker.addListener("click", () => {
-            infoWindow.setContent(label);
-            infoWindow.open(map, marker);
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                <div> 
+                    <h6>lng: ${position.lng}</h6>
+                    <h6>lng: ${position.lat}</h6>
+                </div>
+                `
+              });
+              infoWindow.open(map, marker);
         });
         return marker;
     });

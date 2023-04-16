@@ -23,7 +23,7 @@
                             <i class="bi bi-sun"></i>
                             <!-- <i class="bi bi-moon"></i> -->
                         </label>
-                      </div>
+                    </div>
                 </section>
                 <form action="/" method="get">
                     <div class="mb-3">
@@ -39,8 +39,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Municipality</label>
-                        <select name="municipality" id="selectorMuni" disabled class="form-select">
-                           <!-- se llena con JS  -->
+                        <select name="municipality" id="selectorMuni" <%= (!municipalities)? 'disabled' :'' %> class="form-select">
+                            <!-- se llena con JS  -->
+                            <% municipalities.forEach(muni=> {%>
+                                    <option value="<%= muni.INMUEBLE_C_NOM_MUN %>">
+                                        <%= muni.INMUEBLE_C_NOM_MUN %>
+                                    </option>
+                                <%})%>
                         </select>
                     </div>
                     <div class="mb-3">
