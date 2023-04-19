@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
         });
 
         //Recuperamos las query string si es que existen 
-        const estado = req.query.estado ?? '';
+        const estado = req.query.estado ?? 'AGUASCALIENTES';
         const muni = req.query.municipality ?? '';
         const turno = req.query.turno ?? '';
         const sost = req.query.sost ?? '';
@@ -74,7 +74,8 @@ router.get('/', async (req, res) => {
             turno,
             sost,
             limit: Number(limit),
-            municipalities
+            municipalities,
+            muni 
         });
     } catch (error) {
         res.render('error',{

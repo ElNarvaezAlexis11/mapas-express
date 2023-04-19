@@ -39,12 +39,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Municipality</label>
-                        <select name="municipality" id="selectorMuni" <%= (!municipalities)? 'disabled' :'' %> class="form-select">
+                        <select name="municipality" id="selectorMuni" <%=(!municipalities)? 'disabled' :'' %>
+                            class="form-select">
                             <!-- se llena con JS  -->
-                            <% municipalities.forEach(muni=> {%>
-                                    <option value="<%= muni.INMUEBLE_C_NOM_MUN %>">
-                                        <%= muni.INMUEBLE_C_NOM_MUN %>
-                                    </option>
+                            <% municipalities.forEach(municipio=> {%>
+                                <option value="<%= muni.INMUEBLE_C_NOM_MUN %>"
+                                    <%=municipio.C_ADMINISTRATIVA==muni? 'selected' : '' %> >
+                                    <%= municipio.INMUEBLE_C_NOM_MUN %>
+                                </option> 
                                 <%})%>
                         </select>
                     </div>
